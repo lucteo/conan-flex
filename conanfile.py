@@ -9,6 +9,7 @@ class FlexConan(ConanFile):
     license = "GNU General Public License: https://www.gnu.org/licenses/gpl.html"
     settings = "os", "compiler", "build_type", "arch"
     exports = "*"
+    requires = "bison/3.0.4@lucteo/stable"
 
     archiveName = "flex-2.6.0.tar.gz"
     folderName = "flex-2.6.0"
