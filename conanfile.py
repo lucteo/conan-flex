@@ -10,6 +10,7 @@ class FlexConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     exports = "*"
     requires = "bison/3.0.4@lucteo/stable"
+    build_policy = "missing"
 
     archiveName = "flex-2.6.0.tar.gz"
     folderName = "flex-2.6.0"
