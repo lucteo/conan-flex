@@ -26,7 +26,11 @@ class FlexConan(ConanFile):
         if self.settings.os == "Linux" or self.settings.os == "Macos":
             env = ConfigureEnvironment(self.deps_cpp_info, self.settings)
             env_line = env.command_line
-                        
+
+            # Change the system path to include the dependencies bin dirs
+            env_line = 'export PATH="%s:$PATH" && %s' % (':'.join(self.deps_cpp_info.bindirs), env_line) 
+
+
             self.run("cd %s && %s ./configure --prefix=%s/out" % (self.folderName, env_line, self.conanfile_directory))
             self.run("cd %s && %s make" % (self.folderName, env_line))            
             self.run("cd %s && %s make install " % (self.folderName, env_line))            
